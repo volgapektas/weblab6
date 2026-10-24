@@ -1,17 +1,16 @@
-# React + Vite
+# weblab6 - React Posts Feed
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This project fetches posts from JSONPlaceholder and lists them with title filtering.
 
-Currently, two official plugins are available:
+## File Organization
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `src/postsApi.js`: Fetches posts from the API using native fetch.
+- `src/postsReducer.js`: Handles async state transitions for posts, loading, and error.
+- `src/Post.jsx`: Presentational component for rendering a single post item.
+- `src/PostList.jsx`: Renders the list of posts with unique keys.
+- `src/FilterForm.jsx`: Controlled text input for the filter keyword.
+- `src/App.jsx`: Main container managing side effects, cleanup, and derived state filtering.
 
-## React Compiler
+## Challenges Faced
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
-# weblab6
+Setting up the effect cleanup with a boolean flag was important to make sure no state update runs if the component unmounts. Another challenge was remembering not to store filtered posts in state, but deriving them directly during render made the logic simpler and avoided sync bugs.
