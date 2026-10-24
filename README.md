@@ -1,4 +1,4 @@
-# weblab6 - React Posts Feed
+# weblab6
 
 This project fetches posts from JSONPlaceholder and lists them with title filtering.
 
